@@ -25,6 +25,19 @@ int power(int number, int indice)
 	return ans;
 }
 
+int factorial(int number)
+{
+	int ans = number;
+	for (int i = 1; i < number; i++)
+	{
+		ans = ans * i;
+		cout << ans << endl;
+	}
+	cout << number << "! is " << ans << endl;
+	cout << " " << endl;
+	return number;
+}
+
 int main()
 {
 	char choice = 'Y';
@@ -38,6 +51,7 @@ int main()
 		cout << "Enter the power you want to raise it to: ";
 		cin >> indice;
 		power(number, indice);
+		factorial(number);
 		cout << "Would you like to go again?" << endl;
 		cin >> choice;
 		cout << " " << endl;
