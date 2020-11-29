@@ -27,15 +27,24 @@ int power(int number, int indice)
 
 int factorial(int number)
 {
-	int ans = number;
-	for (int i = 1; i < number; i++)
-	{
+	int ans = 1;
+	for (int i = number; i > 0; i--)
+	{	
 		ans = ans * i;
-		cout << ans << endl;
 	}
-	cout << number << "! is " << ans << endl;
-	cout << " " << endl;
-	return number;
+	return ans;
+}
+
+int test(int number)
+{
+	int coefficient;
+	for (int i = number; i >= 0; i--)
+	{
+		coefficient = factorial(number) / ((factorial(i) * factorial(number-i)));
+		cout << coefficient << endl;
+	}
+
+	return coefficient;
 }
 
 int main()
@@ -52,6 +61,8 @@ int main()
 		cin >> indice;
 		power(number, indice);
 		factorial(number);
+		test(number);
+		cout << " " << endl;
 		cout << "Would you like to go again?" << endl;
 		cin >> choice;
 		cout << " " << endl;
