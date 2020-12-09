@@ -1,17 +1,7 @@
 #include <stdio.h>
 #include <iostream>
+#include "InfInt.h"
 using namespace std;
-
-int isitPrime(int number)
-{
-	int input;
-	cin >> input;
-
-	if (input )
-	cout << input << endl;
-
-	return number;
-}
 
 int power(int number, int indice)
 {
@@ -35,16 +25,36 @@ int factorial(int number)
 	return ans;
 }
 
-int test(int number)
+int extract_coefficient(int number)
 {
 	int coefficient;
 	for (int i = number; i >= 0; i--)
 	{
 		coefficient = factorial(number) / ((factorial(i) * factorial(number-i)));
-		cout << coefficient << endl;
+		while (coefficient)
+		{
+			if (coefficient % number != 0 && coefficient % number != 1)
+			{
+				cout << "NOT A PRIME!" << endl;
+				break;
+				
+			}
+			else
+			{
+				cout << "Number is a prime." << endl;
+				break;
+				
+			}
+		}
 	}
-
 	return coefficient;
+}
+
+int isitPrime(int number)
+{
+	int result = number;
+	cout << result << endl;
+	return result;
 }
 
 int main()
@@ -61,7 +71,7 @@ int main()
 		cin >> indice;
 		power(number, indice);
 		factorial(number);
-		test(number);
+		extract_coefficient(number);
 		cout << " " << endl;
 		cout << "Would you like to go again?" << endl;
 		cin >> choice;
