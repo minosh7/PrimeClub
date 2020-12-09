@@ -3,10 +3,10 @@
 #include "InfInt.h"
 using namespace std;
 
-int power(int number, int indice)
+InfInt power(InfInt number, InfInt indice)
 {
-	int ans = 1;
-	for (int i = 0; i < indice; i++)
+	InfInt ans = 1;
+	for (InfInt i = 0; i < indice; i++)
 	{
 		ans = ans * number;
 	}
@@ -15,44 +15,49 @@ int power(int number, int indice)
 	return ans;
 }
 
-int factorial(int number)
+InfInt factorial(InfInt number)
 {
-	int ans = 1;
-	for (int i = number; i > 0; i--)
+	InfInt ans = 1;
+	for (InfInt i = number; i > 0; i--)
 	{	
 		ans = ans * i;
 	}
 	return ans;
 }
 
-int extract_coefficient(int number)
+InfInt extract_coefficient(InfInt number)
 {
-	int coefficient;
-	for (int i = number; i >= 0; i--)
+	InfInt coefficient;
+	bool isDivisible = true;
+	for (InfInt i = number; i >= 0; i--)
 	{
 		coefficient = factorial(number) / ((factorial(i) * factorial(number-i)));
-		while (coefficient)
+		cout << "Checking Coefficients: " << coefficient << endl;
+		cout << " " << endl;
+		if (coefficient != 1 && coefficient % number != 0)
 		{
-			if (coefficient % number != 0 && coefficient % number != 1)
-			{
-				cout << "NOT A PRIME!" << endl;
-				break;
-				
-			}
-			else
-			{
-				cout << "Number is a prime." << endl;
-				break;
-				
-			}
+			isDivisible = false;
+			break;
 		}
 	}
+
+	if (isDivisible == true)
+	{
+		cout << "Number is prime" << endl;
+		cout << " " << endl;
+	}
+	else if (isDivisible == false)
+	{
+		cout << "Not a prime!" << endl;
+		cout << " " << endl;
+	}
+
 	return coefficient;
 }
 
-int isitPrime(int number)
+InfInt isitPrime(InfInt number)
 {
-	int result = number;
+	InfInt result = number;
 	cout << result << endl;
 	return result;
 }
@@ -62,8 +67,8 @@ int main()
 	char choice = 'Y';
 	while (choice == 'Y' || choice == 'y')
 	{
-		int number;
-		int indice;
+		InfInt number;
+		InfInt indice;
 		cout << "Welcome to the club. Enter the password. " << endl;
 		cout << "Enter number: ";
 		cin >> number;
